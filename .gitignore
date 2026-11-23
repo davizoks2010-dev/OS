@@ -1,24 +1,37 @@
-# Segredos
+# === Segredos (NUNCA no Git) ===
 .env
 .env.*
 !.env.example
+*.key
+*.pem
+*.pfx
+*.p12
+id_rsa*
+*.keystore
 
-# Python
+# === Bancos locais ===
+*.db
+*.sqlite
+*.sqlite3
+
+# === Python ===
 __pycache__/
 *.py[cod]
-.venv/
 venv/
+.venv/
 .pytest_cache/
+.ruff_cache/
+.mypy_cache/
 
-# Logs (mantém só a pasta)
-logs/*
-!logs/.gitkeep
+# === Node ===
+node_modules/
 
-# Obsidian (estado local da interface)
+# === Obsidian (estado local da interface, não conteúdo) ===
 vault/.obsidian/workspace*.json
+vault/.obsidian/cache
 vault/.trash/
 
-# SO / editores
+# === Sistema operacional / editores ===
 Thumbs.db
 desktop.ini
 .DS_Store
