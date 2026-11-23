@@ -31,3 +31,4 @@ _A preencher._
 | Gasto com IA e servidores | Diário / mensal | `custos-ia.json` / `financeiro.json` |
 | Entregas da sprint | Semanal | [[wiki/projetos/indice-projetos]] |
 | Propostas enviadas / fechadas | Semanal | `outputs/propostas/` |
+| Ideias de negócio em validação | Semanal | [[wiki/negocios/pipeline-de-negocios]] |

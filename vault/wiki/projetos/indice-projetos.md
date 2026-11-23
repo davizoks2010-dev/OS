@@ -10,7 +10,6 @@ status: ativo
 | Projeto | Tipo | Fase | Notas |
 |---|---|---|---|
 | [[projetos/app-proprio/README\|App Próprio]] | App | _a preencher_ | [[projetos/app-proprio/status\|status]] · [[projetos/app-proprio/roadmap\|roadmap]] |
-| [[projetos/mesa-solana/README\|Mesa Solana]] | Bot (simulação: desk_adaptive, desk_nightdesk) | _a preencher_ | [[projetos/mesa-solana/status\|status]] · [[projetos/mesa-solana/roadmap\|roadmap]] |
 
 ## Arquitetura transversal
 _Padrões compartilhados entre projetos (stack, CI, convenções) — a preencher._
