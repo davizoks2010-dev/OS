@@ -1,0 +1,16 @@
+{
+  "atualizado_em": null,
+  "moeda": "BRL",
+  "mes_referencia": null,
+  "receitas": 0.0,
+  "custos": {
+    "fixos": 0.0,
+    "ia": 0.0,
+    "servidores": 0.0,
+    "pessoal": 0.0,
+    "outros": 0.0
+  },
+  "saldo": 0.0,
+  "margem_pct": null,
+  "historico": []
+}

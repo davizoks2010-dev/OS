@@ -1,39 +1,21 @@
-# === Segredos (NUNCA no Git) ===
 .env
-.env.*
-!.env.example
 *.key
 *.pem
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+vault/raw/financeiro/*.csv
+vault/logs/automacoes/*.log
+
+# --- Extras (proteção adicional) ---
+.env.*
+!.env.example
 *.pfx
 *.p12
-id_rsa*
-*.keystore
-
-# === Bancos locais ===
-*.db
-*.sqlite
-*.sqlite3
-
-# === Python ===
-__pycache__/
-*.py[cod]
-venv/
-.venv/
-.pytest_cache/
-.ruff_cache/
-.mypy_cache/
-
-# === Node ===
-node_modules/
-
-# === Obsidian (estado local da interface, não conteúdo) ===
 vault/.obsidian/workspace*.json
-vault/.obsidian/cache
 vault/.trash/
-
-# === Sistema operacional / editores ===
 Thumbs.db
 desktop.ini
 .DS_Store
-.vscode/
-.idea/

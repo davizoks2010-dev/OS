@@ -1,0 +1,12 @@
+{
+  "data_brt": "2026-11-23",
+  "n1_calls": 0,
+  "n2_calls": 0,
+  "n3_calls": 0,
+  "gasto_usd_hoje": 0.0,
+  "limite_usd_diario": 2.0,
+  "limite_n2_calls": 100,
+  "limite_n3_calls": 25,
+  "alerta_enviado": false,
+  "historico": []
+}

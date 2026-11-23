@@ -11,6 +11,7 @@ status: ativo
 > Este projeto é tratado só como software. **Nunca** há chaves privadas, carteiras ou transações reais envolvidas (ver regra 4.1 do CLAUDE.md).
 
 ## O que é
+Mesa de trading **em simulação** com as estratégias `desk_adaptive` e `desk_nightdesk`.
 _A preencher: problema que resolve, para quem, proposta de valor._
 
 ## Stack

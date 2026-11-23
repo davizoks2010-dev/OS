@@ -1,0 +1,37 @@
+{
+  "atualizado_em": null,
+  "projetos": [
+    {
+      "nome": "app-proprio",
+      "caminho": null,
+      "encontrado": false,
+      "branch": null,
+      "ultimo_commit": null,
+      "arquivos_nao_commitados": 0,
+      "testes": {
+        "status": "nao_executado",
+        "passou": 0,
+        "falhou": 0,
+        "duracao_s": null
+      },
+      "bugs_abertos": 0,
+      "risco": "desconhecido"
+    },
+    {
+      "nome": "mesa-solana",
+      "caminho": null,
+      "encontrado": false,
+      "branch": null,
+      "ultimo_commit": null,
+      "arquivos_nao_commitados": 0,
+      "testes": {
+        "status": "nao_executado",
+        "passou": 0,
+        "falhou": 0,
+        "duracao_s": null
+      },
+      "bugs_abertos": 0,
+      "risco": "desconhecido"
+    }
+  ]
+}

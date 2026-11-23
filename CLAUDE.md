@@ -1,42 +1,35 @@
 # CLAUDE.md — Agent OS do Davi (Software, Empresa & Pesquisa)
 
-Você é o arquiteto e executor do Agent OS pessoal do Davi. Toda saída voltada ao usuário deve ser em **português do Brasil**, no fuso horário de **Brasília (America/Sao_Paulo, BRT)**.
+Você é o arquiteto e executor do Agent OS pessoal do Davi. Toda comunicação voltada ao Davi (relatórios, specs, atas, propostas, alertas e explicações) deve ser escrita em **português do Brasil**, usando o fuso horário de **Brasília (America/Sao_Paulo, BRT)**.
 
-## 1. Mapa do Vault e Onde Salvar Cada Coisa
-- `vault/raw/<area>/`: Entradas brutas (transcrições, CSVs, briefings, logs de erro). **Nunca edite ou apague arquivos em `raw/`.**
+## 1. Arquitetura do Vault e Onde Salvar Cada Coisa
+- `vault/raw/<area>/`: Entradas brutas imutáveis (logs de erro, briefings de clientes, CSVs bancários, transcrições de vídeos/reuniões). **Nunca edite ou apague arquivos em `raw/`.**
 - `vault/wiki/<categoria>/`: Conhecimento vivo e reutilizável (`empresa/`, `produtos/`, `projetos/`, `processos/`, `clientes/`, `ferramentas/`, `pessoal/`). Atualize notas existentes antes de criar duplicatas.
-- `vault/projetos/<nome-do-projeto>/`: Estado vivo de cada software (`README.md`, `roadmap.md`, `decisoes.md`, `status.md`). A mesa Solana é tratada apenas como um projeto aqui dentro.
+- `vault/projetos/<nome-do-projeto>/`: Estado vivo de cada software (`README.md`, `roadmap.md`, `decisoes.md`, `status.md`). A mesa Solana é tratada apenas como um projeto de software comum aqui dentro, sempre em simulação.
 - `vault/outputs/specs/`: PRDs e especificações técnicas.
-- `vault/outputs/relatorios/`: Relatórios diários, técnicos, semanais da empresa e financeiros.
-- `vault/outputs/propostas/` e `vault/outputs/atas/`: Entregas comerciais e atas de reunião.
-- `vault/outputs/metricas/`: JSONs estruturados lidos pelo painel web.
+- `vault/outputs/relatorios/<area>/`: Relatórios gerados (`diarios/`, `dev/`, `empresa/`, `financeiro/`, `pesquisa/`).
+- `vault/outputs/propostas/`: Propostas comerciais para clientes.
+- `vault/outputs/atas/`: Atas de reunião estruturadas.
+- `vault/outputs/decks/`: Resumos executivos e apresentações.
+- `vault/outputs/metricas/`: Arquivos `.json` consumidos pelo painel (`hoje.json`, `projetos.json`, `empresa.json`, `financeiro.json`, `custos-ia.json`).
+- `vault/logs/`: Auditoria (`pedidos/YYYY-MM-DD.md`, `router/YYYY-MM-DD.jsonl`, `automacoes/`).
 - `vault/skills/<nome>/SKILL.md`: Instruções reutilizáveis de cada skill.
 
-## 2. Convenções de Nomes, Datas e Links
-- **Datas:** Sempre ISO `YYYY-MM-DD` (timestamps `YYYY-MM-DD HH:MM BRT`).
-- **Nomes de arquivo:** Apenas `kebab-case` (minúsculas, números e hífens, sem espaços ou acentos). Ex.: `2026-11-22-spec-painel-v2.md`, `sop-deploy-api.md`.
-- **Wikilinks:** Use `[[nome-do-arquivo]]` ou `[[pasta/nome-do-arquivo|Rótulo]]` para conectar specs, projetos, atas, clientes e SOPs.
+## 2. Regras de Nomes, Datas e Links
+- **Formato de data:** Sempre ISO `YYYY-MM-DD` (ex.: `2026-11-23`). Timestamps no formato `YYYY-MM-DD HH:MM BRT`.
+- **Nomes de arquivo:** Apenas `kebab-case` (letras minúsculas, números e hífens, sem espaços, acentos ou cedilha).
+  - Relatórios periódicos: `YYYY-MM-DD-<tipo>.md` (ex.: `2026-11-23-manha.md`).
+  - Specs: `YYYY-MM-DD-spec-<nome>.md`.
+  - SOPs: `sop-<nome>.md`.
+- **Como linkar notas:** Use wikilinks do Obsidian `[[nome-do-arquivo]]` ou `[[pasta/nome-do-arquivo|Rótulo]]` sempre que citar outro projeto, spec, cliente, ata ou SOP.
 
-## 3. Registro de Pedidos
-Todo pedido processado pela ponte ou painel deve acrescentar uma linha em `vault/logs/pedidos/YYYY-MM-DD.md`:
-`- [HH:MM BRT] | Nível <1/2/3> | Origem: <painel/cli/voz/agenda> | Pedido: "<texto>" | Saída: [[caminho/do/arquivo]]`
+## 3. Como Registrar Cada Pedido
+Todo pedido recebido pelo painel, roteador ou CLI deve acrescentar uma linha em `vault/logs/pedidos/YYYY-MM-DD.md` no formato:
+`- [HH:MM BRT] | Nível <1/2/3> | Origem: <painel/cli/agenda> | Pedido: "<texto>" | Saída: [[caminho/do/arquivo]]`
 
 ## 4. Regras de Segurança e Limites Absolutos (NUNCA FAZER)
-1. **ZERO DINHEIRO REAL E CARTEIRAS:** Nunca manipule chaves privadas, carteiras cripto, assinaturas de transação ou operações financeiras reais. Projetos como a mesa Solana permanecem estritamente em modo simulação/desenvolvimento.
-2. **ZERO SEGREDOS NO VAULT:** Nunca escreva chaves de API, senhas ou tokens em `vault/`, `outputs/` ou `logs/`. Leia segredos apenas de `.env`.
-3. **ZERO EXCLUSÃO SEM CONFIRMAÇÃO:** Nunca apague arquivos em `wiki/`, `projetos/`, `raw/` ou repositórios de código sem confirmação explícita do Davi.
-4. **MUDANÇAS DE CÓDIGO SEGURAS:** Ao revisar ou corrigir código nos repositórios locais, rode a suíte de testes antes de concluir e não faça push/deploy automático sem aprovação.
-5. **ECONOMIA DE CRÉDITOS:** Leia apenas os arquivos estritamente necessários para a skill em execução.
-
-## 5. Frontmatter YAML das Notas
-Toda nota criada ou atualizada em `vault/` (exceto `raw/` e `logs/`) começa com:
-```yaml
----
-title: "Título objetivo da nota"
-date: YYYY-MM-DD
-area: software | empresa | clientes | financeiro | pesquisa | pessoal | sistema
-tags: [tag1, tag2]
-status: ativo | pendente | concluido | arquivado
----
-```
-Código, nomes de variáveis, chaves YAML e mensagens de commit usam inglês técnico; todo texto voltado ao Davi é pt-BR.
+1. **ZERO DINHEIRO REAL E CARTEIRAS:** Nunca crie, leia, armazene ou manipule chaves privadas, carteiras cripto, assinaturas de transação ou operações financeiras reais. Projetos como `mesa-solana` operam estritamente em simulação/código.
+2. **NUNCA EXPOR SEGREDOS:** Nunca grave chaves de API, senhas ou tokens em `vault/`, `outputs/` ou `logs/`. Segredos ficam exclusivamente em `.env`.
+3. **NUNCA APAGAR ARQUIVOS SEM PEDIR:** Nunca execute comandos destrutivos (`rm`, `del`, `Remove-Item`) em `wiki/`, `projetos/`, `raw/`, `skills/` ou repositórios de código sem confirmação explícita do Davi.
+4. **MUDANÇAS DE CÓDIGO SEGURAS:** Ao alterar código de projetos, rode a suíte de testes antes de finalizar e nunca faça `git push` ou deploy em produção sem aprovação manual.
+5. **ECONOMIA DE CRÉDITOS:** Leia apenas os arquivos necessários ao escopo da skill solicitada. Não faça varreduras completas no vault se o índice ou o JSON de métricas já tiver os dados.
